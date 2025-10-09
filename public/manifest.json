@@ -1,0 +1,56 @@
+{
+  "name": "BoomXpresse - Import Chine & Logistique Internationale",
+  "short_name": "BoomXpresse",
+  "description": "Importez facilement depuis la Chine avec BoomXpresse ! Sourcing, contrôle qualité, transport maritime et dédouanement.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#f97316",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-512x512.png", 
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "logistics"],
+  "shortcuts": [
+    {
+      "name": "Devis gratuit",
+      "short_name": "Devis",
+      "description": "Obtenir un devis gratuit",
+      "url": "/#contact",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Blog",
+      "short_name": "Blog", 
+      "description": "Conseils import Chine",
+      "url": "/blog",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+    }
+  ]
+}
