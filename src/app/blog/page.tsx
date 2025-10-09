@@ -13,7 +13,7 @@ const blogPosts = [
     content: `
 # Comment réussir son premier import depuis la Chine en 2025
 
-L'import depuis la Chine peut sembler complexe pour un débutant, mais avec les bons conseils, c'est un processus accessible et rentable.
+L&apos;import depuis la Chine peut sembler complexe pour un débutant, mais avec les bons conseils, c&apos;est un processus accessible et rentable.
 
 ## 1. Recherche et sélection de fournisseurs
 
@@ -229,7 +229,7 @@ export default function BlogPage() {
         <div className="container mx-auto px-4">
           <Link href="/" className="inline-flex items-center text-orange-100 hover:text-white mb-6 transition-colors">
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Retour à l'accueil
+            Retour à l&apos;accueil
           </Link>
           
           <h1 className="text-4xl lg:text-5xl font-bold mb-4">
@@ -357,7 +357,7 @@ export default function BlogPage() {
         <div className="mt-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl p-8 text-white text-center">
           <h3 className="text-2xl font-bold mb-4">Restez informé</h3>
           <p className="text-orange-100 mb-6 max-w-2xl mx-auto">
-            Recevez nos derniers conseils et actualités sur l'import depuis la Chine directement dans votre boîte mail.
+            Recevez nos derniers conseils et actualités sur l&apos;import depuis la Chine directement dans votre boîte mail.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
             <input
@@ -366,7 +366,7 @@ export default function BlogPage() {
               className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-300"
             />
             <button className="bg-white text-orange-600 px-6 py-3 rounded-lg font-semibold hover:bg-orange-50 transition-colors">
-              S'abonner
+              S&apos;abonner
             </button>
           </div>
         </div>

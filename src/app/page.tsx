@@ -750,7 +750,7 @@ Demande envoyée depuis le site web.`
               )}
               {submitStatus === 'error' && (
                 <div className="mb-6 p-4 bg-red-500/20 border border-red-500 rounded-lg text-red-300">
-                  ❌ Une erreur s'est produite. Veuillez réessayer ou nous contacter directement.
+                  ❌ Une erreur s&apos;est produite. Veuillez réessayer ou nous contacter directement.
                 </div>
               )}
 
@@ -813,7 +813,7 @@ Demande envoyée depuis le site web.`
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
-                    placeholder="Décrivez votre projet d'import *"
+                    placeholder="Décrivez votre projet d&apos;import *"
                     required
                     className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all resize-none"
                   ></textarea>
