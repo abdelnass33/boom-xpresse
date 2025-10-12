@@ -9,13 +9,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 1,
-      alternates: {
-        languages: {
-          fr: `${baseUrl}/`,
-          en: `${baseUrl}/en`,
-          zh: `${baseUrl}/zh`,
-        },
-      },
     },
     {
       url: `${baseUrl}/blog`,
@@ -42,16 +35,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
-      url: `${baseUrl}/en`,
+      url: `${baseUrl}/devis`,
       lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/zh`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 0.9,
+      changeFrequency: 'weekly',
+      priority: 0.8,
     },
   ]
 }
