@@ -29,6 +29,7 @@ const Header = () => {
     { href: '#how-it-works', label: 'How it works' },
     { href: '#why-us', label: 'Why us' },
     { href: '#testimonials', label: 'Testimonials' },
+    { href: '/en/devis', label: 'Rates & Quotes' },
     { href: '/blog', label: 'Blog' },
     { href: '#contact', label: 'Contact' }
   ]

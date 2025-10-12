@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Menu, X, Globe, Package, Truck, Shield, Star, Phone, Mail, MapPin, ChevronRight, Play } from 'lucide-react'
+import { Menu, X, Globe, Package, Truck, Shield, Star, Phone, Mail, MapPin, ChevronRight, Play, Clock, CheckCircle, Users, Heart } from 'lucide-react'
 import { FaFacebookF, FaLinkedinIn, FaEnvelope } from 'react-icons/fa';
 import { SiSnapchat, SiInstagram, SiTiktok } from 'react-icons/si';
 import { motion } from 'framer-motion';
@@ -123,7 +123,9 @@ const Header = () => {
     { href: '#services', label: 'Services' },
     { href: '#comment-ca-marche', label: 'Comment ça marche' },
     { href: '#pourquoi-nous', label: 'Pourquoi nous' },
+    { href: '#offres', label: 'Nos offres' },
     { href: '#temoignages', label: 'Témoignages' },
+    { href: '/devis', label: 'Tarifs & Devis' },
     { href: '/blog', label: 'Blog' },
     { href: '#contact', label: 'Contact' }
   ]
@@ -239,7 +241,7 @@ const Hero = () => {
             </h1>
             
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              BoomXpresse vous accompagne dans l&apos;achat et la livraison de produits chinois partout dans le monde. 
+              BoomXpresse vous accompagne dans l'achat et la livraison de produits chinois partout dans le monde. 
               Service rapide, fiable et sécurisé avec suivi en temps réel.
             </p>
             
@@ -248,10 +250,10 @@ const Hero = () => {
                 Commencer maintenant
                 <ChevronRight className="ml-2 h-5 w-5" />
               </a>
-              <button className="border-2 border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 flex items-center justify-center">
-                <Play className="mr-2 h-5 w-5" />
-                Voir comment ça marche
-              </button>
+              <Link href="/devis" className="border-2 border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 flex items-center justify-center">
+                <ChevronRight className="mr-2 h-5 w-5" />
+                Voir les tarifs
+              </Link>
             </div>
 
             {/* Trust indicators */}
@@ -314,48 +316,52 @@ const Hero = () => {
 const Services = () => {
   const services = [
     {
-      icon: <Package className="h-12 w-12 text-orange-600" />,
+      icon: <Package className="h-12 w-12 text-white" />,
       title: "Sourcing de produits",
       description: "Nous trouvons les meilleurs fournisseurs chinois pour vos besoins spécifiques.",
-      image: "sourcing"
+      gradient: "from-orange-500 to-orange-600",
+      bgGradient: "from-orange-50/50 to-orange-100/30"
     },
     {
-      icon: <Shield className="h-12 w-12 text-orange-600" />,
+      icon: <Shield className="h-12 w-12 text-white" />,
       title: "Contrôle qualité",
       description: "Inspection rigoureuse de tous les produits avant expédition.",
-      image: "quality"
+      gradient: "from-emerald-500 to-emerald-600",
+      bgGradient: "from-emerald-50/50 to-emerald-100/30"
     },
     {
-      icon: <Truck className="h-12 w-12 text-orange-600" />,
+      icon: <Truck className="h-12 w-12 text-white" />,
       title: "Logistique internationale",
-      description: "Transport sécurisé et suivi en temps réel jusqu&apos;à votre porte.",
-      image: "logistics"
+      description: "Transport sécurisé et suivi en temps réel jusqu'à votre porte.",
+      gradient: "from-blue-500 to-blue-600",
+      bgGradient: "from-blue-50/50 to-blue-100/30"
     },
     {
-      icon: <Globe className="h-12 w-12 text-orange-600" />,
+      icon: <Globe className="h-12 w-12 text-white" />,
       title: "Dédouanement",
       description: "Gestion complète des formalités douanières dans tous les pays.",
-      image: "customs"
+      gradient: "from-purple-500 to-purple-600",
+      bgGradient: "from-purple-50/50 to-purple-100/30"
     }
   ]
 
   return (
-    <section id="services" className="py-20 bg-white relative overflow-hidden">
+    <section id="services" className="py-20 bg-gradient-to-br from-white to-slate-50 relative overflow-hidden">
       {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-10 left-10 w-32 h-32 border-2 border-orange-300 rounded-full"></div>
-        <div className="absolute bottom-10 right-10 w-48 h-48 border-2 border-orange-200 rounded-full"></div>
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-orange-400/10 to-pink-400/10 rounded-full blur-3xl animate-pulse-gentle"></div>
+        <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-full blur-3xl animate-pulse-gentle" style={{animationDelay: '2s'}}></div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16 animate-slide-up">
-          <div className="inline-flex items-center px-4 py-2 bg-orange-100 rounded-full text-orange-800 text-sm font-medium mb-6">
+          <div className="inline-flex items-center px-6 py-3 bg-white/70 backdrop-blur-lg rounded-full text-orange-800 text-sm font-medium mb-6 shadow-lg border border-white/20">
             <Star className="h-4 w-4 mr-2" />
             Services professionnels
           </div>
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Nos Services</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Une solution complète pour tous vos besoins d&apos;import depuis la Chine
+            Une solution complète pour tous vos besoins d'import depuis la Chine
           </p>
         </div>
         
@@ -363,24 +369,32 @@ const Services = () => {
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className="group text-center p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 hover:from-orange-50 hover:to-orange-100 transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-200 hover:border-orange-200 active:scale-95"
-              initial={{ opacity: 0, y: 40 }}
+              className="group text-center p-8 rounded-3xl backdrop-blur-lg bg-white/70 hover:bg-white/80 transition-all duration-700 transform hover:-translate-y-3 hover:scale-105 hover:shadow-2xl border border-white/20 hover:border-white/40 active:scale-95 relative overflow-hidden"
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.8, delay: index * 0.15 }}
             >
-              {/* Service illustration placeholder */}
-              <div className="aspect-square bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl mb-4 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+              {/* Background gradient overlay */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${service.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+              
+              {/* Service icon */}
+              <div className={`relative z-10 w-20 h-20 bg-gradient-to-br ${service.gradient} rounded-2xl mb-6 flex items-center justify-center mx-auto group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg`}>
                 {service.icon}
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-orange-600 transition-colors">
-                {service.title}
-              </h3>
-              <p className="text-gray-600 leading-relaxed">{service.description}</p>
               
-              {/* Hover effect arrow */}
-              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <ChevronRight className="h-5 w-5 text-orange-500 mx-auto" />
+              <div className="relative z-10">
+                <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-gray-800 transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors">{service.description}</p>
+                
+                {/* Hover effect arrow */}
+                <div className="mt-6 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                  <div className={`inline-flex items-center justify-center w-10 h-10 bg-gradient-to-br ${service.gradient} rounded-full shadow-lg`}>
+                    <ChevronRight className="h-5 w-5 text-white" />
+                  </div>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -413,7 +427,7 @@ const HowItWorks = () => {
     {
       number: "4",
       title: "Livraison sécurisée",
-      description: "Transport et livraison avec suivi temps réel jusqu&apos;à vous.",
+      description: "Transport et livraison avec suivi temps réel jusqu'à vous.",
       color: "purple"
     }
   ]
@@ -472,7 +486,7 @@ const WhyChooseUs = () => {
     {
       icon: <Star className="h-8 w-8 text-orange-600" />,
       title: "Expertise chinoise",
-      description: "Plus de 10 ans d&apos;expérience sur le marché chinois",
+      description: "Plus de 10 ans d'expérience sur le marché chinois",
       gradient: "from-orange-500 to-yellow-500"
     },
     {
@@ -542,7 +556,7 @@ const Testimonials = () => {
     {
       name: "Marie Dubois",
       company: "Boutique Mode",
-      content: "BoomXpresse nous a permis d&apos;importer nos collections depuis la Chine en toute sérénité. Service impeccable !",
+      content: "BoomXpresse nous a permis d'importer nos collections depuis la Chine en toute sérénité. Service impeccable !",
       rating: 5,
       avatar: "MD"
     },
@@ -608,6 +622,204 @@ const Testimonials = () => {
               <p className="text-gray-700 leading-relaxed italic">&ldquo;{testimonial.content}&rdquo;</p>
             </motion.div>
           ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+const PricingPlans = () => {
+  const plans = [
+    {
+      name: "Starter",
+      subtitle: "DÉMARREZ SIMPLEMENT",
+      description: "Faites vos achats en ligne ou confiez-nous vos colis prêts, nous gérons l'expédition !",
+      features: [
+        "Frais de gestion : 2,5€ par colis",
+        "Plafond : 12,5€ à partir du 5ème colis",
+        "Frais d'expédition en sus"
+      ],
+      headerGradient: "from-blue-500 to-blue-600",
+      bgGradient: "from-blue-50/50 to-blue-100/30",
+      borderColor: "border-blue-200",
+      iconBg: "from-blue-400 to-blue-500",
+      popular: false
+    },
+    {
+      name: "Premium",
+      subtitle: "ACHATS ACCOMPAGNÉS",
+      description: "Votre personal shopper par visio Whatsapp, dans le magasin de votre choix !",
+      features: [
+        "Demi-journée : 50€",
+        "Journée complète : 100€", 
+        "Frais d'expédition en sus"
+      ],
+      headerGradient: "from-purple-500 to-purple-600",
+      bgGradient: "from-purple-50/50 to-purple-100/30",
+      borderColor: "border-purple-200",
+      iconBg: "from-purple-400 to-purple-500",
+      popular: true
+    },
+    {
+      name: "Sérénité",
+      subtitle: "ON S'OCCUPE DE TOUT",
+      description: "Pas de carte bancaire ? Nous achetons pour vous et livrons chez vous !",
+      features: [
+        "Frais de service : 10% du panier",
+        "Paiement et expédition par nos soins",
+        "Frais d'expédition en sus"
+      ],
+      headerGradient: "from-emerald-500 to-emerald-600",
+      bgGradient: "from-emerald-50/50 to-emerald-100/30",
+      borderColor: "border-emerald-200",
+      iconBg: "from-emerald-400 to-emerald-500",
+      popular: false,
+      badge: "Recommandé"
+    }
+  ]
+
+  return (
+    <section id="offres" className="py-20 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-10 left-10 w-72 h-72 bg-gradient-to-br from-orange-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse-gentle"></div>
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse-gentle" style={{animationDelay: '2s'}}></div>
+        <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-emerald-400/20 to-teal-400/20 rounded-full blur-3xl animate-pulse-gentle" style={{animationDelay: '4s'}}></div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-16 animate-slide-up">
+          <div className="inline-flex items-center px-6 py-3 bg-white/70 backdrop-blur-lg rounded-full text-orange-800 text-sm font-medium mb-6 shadow-lg border border-white/20">
+            <Package className="h-4 w-4 mr-2" />
+            Nos offres de services
+          </div>
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            Choisissez votre 
+            <span className="block bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+              formule idéale
+            </span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Des solutions adaptées à chaque besoin, de l'entrepreneur débutant à l'entreprise établie
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {plans.map((plan, index) => (
+            <motion.div
+              key={index}
+              className={`group relative backdrop-blur-lg bg-white/70 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-3 hover:scale-[1.02] border-2 ${
+                plan.popular ? `${plan.borderColor} ring-2 ring-purple-200/50 scale-105` : `${plan.borderColor} hover:${plan.borderColor}`
+              } overflow-hidden`}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8, delay: index * 0.15 }}
+            >
+              {/* Background gradient overlay */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${plan.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+              
+              {/* Popular badge */}
+              {plan.popular && (
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
+                  <div className="bg-gradient-to-r from-purple-500 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg border-2 border-white">
+                    ⭐ Plus populaire
+                  </div>
+                </div>
+              )}
+
+              {/* Best Offer badge */}
+              {plan.badge && (
+                <div className="absolute top-4 right-4 z-10">
+                  <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-4 py-2 rounded-xl text-sm font-bold shadow-lg border border-white/20">
+                    {plan.badge}
+                  </div>
+                </div>
+              )}
+
+              {/* Header */}
+              <div className={`relative z-10 bg-gradient-to-br ${plan.headerGradient} p-8 text-center text-white`}>
+                <div className={`w-16 h-16 bg-gradient-to-br ${plan.iconBg} rounded-2xl mx-auto mb-4 flex items-center justify-center shadow-lg`}>
+                  {plan.name === 'Starter' && <Package className="h-8 w-8 text-white" />}
+                  {plan.name === 'Premium' && <Users className="h-8 w-8 text-white" />}
+                  {plan.name === 'Sérénité' && <Heart className="h-8 w-8 text-white" />}
+                </div>
+                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
+                <p className="text-sm opacity-90 font-medium tracking-wide">{plan.subtitle}</p>
+              </div>
+
+              {/* Content */}
+              <div className="relative z-10 p-8">
+                <p className="text-center mb-6 text-gray-600 leading-relaxed">{plan.description}</p>
+
+                {/* Features */}
+                <div className="space-y-4 mb-8">
+                  {plan.features.map((feature, featureIndex) => (
+                    <div key={featureIndex} className="flex items-start group/feature">
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-br from-green-400 to-green-500 flex items-center justify-center mr-3 mt-0.5">
+                        <CheckCircle className="h-4 w-4 text-white" />
+                      </div>
+                      <span className="text-sm text-gray-700 font-medium group-hover/feature:text-gray-900 transition-colors">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* CTA Button */}
+                <a
+                  href={`${whatsappLink}&text=${encodeURIComponent(`Bonjour, je suis intéressé par l'offre ${plan.name}. Pouvez-vous me donner plus d'informations ?`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center group/btn bg-gradient-to-r ${plan.headerGradient} text-white shadow-lg hover:shadow-xl`}
+                >
+                  Je veux cette offre
+                  <ChevronRight className="ml-2 h-5 w-5 group-hover/btn:translate-x-1 transition-transform" />
+                </a>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Additional info */}
+        <div className="mt-20 text-center">
+          <div className="backdrop-blur-lg bg-white/80 rounded-3xl shadow-2xl p-10 max-w-5xl mx-auto border border-white/20 relative overflow-hidden">
+            {/* Background gradient */}
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-purple-50/30 rounded-3xl"></div>
+            
+            <div className="relative z-10">
+              <h3 className="text-3xl font-bold text-gray-900 mb-8">
+                Pourquoi choisir nos formules ?
+              </h3>
+              <div className="grid md:grid-cols-3 gap-8 text-sm text-gray-600">
+                <div className="flex items-start p-4 rounded-2xl bg-white/50 backdrop-blur-sm border border-white/30 hover:bg-white/70 transition-all duration-300">
+                  <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-green-400 to-green-500 rounded-full flex items-center justify-center mr-4">
+                    <Shield className="h-5 w-5 text-white" />
+                  </div>
+                  <div>
+                    <div className="font-bold text-gray-900 mb-1">Transparence totale</div>
+                    <div>Aucun frais caché, prix fixes</div>
+                  </div>
+                </div>
+                <div className="flex items-start p-4 rounded-2xl bg-white/50 backdrop-blur-sm border border-white/30 hover:bg-white/70 transition-all duration-300">
+                  <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-500 rounded-full flex items-center justify-center mr-4">
+                    <Clock className="h-5 w-5 text-white" />
+                  </div>
+                  <div>
+                    <div className="font-bold text-gray-900 mb-1">Engagement délais</div>
+                    <div>Respect des délais annoncés</div>
+                  </div>
+                </div>
+                <div className="flex items-start p-4 rounded-2xl bg-white/50 backdrop-blur-sm border border-white/30 hover:bg-white/70 transition-all duration-300">
+                  <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center mr-4">
+                    <Star className="h-5 w-5 text-white" />
+                  </div>
+                  <div>
+                    <div className="font-bold text-gray-900 mb-1">Qualité garantie</div>
+                    <div>Satisfaction ou remboursement</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -685,7 +897,7 @@ Demande envoyée depuis le site web.`
           </div>
           <h2 className="text-4xl font-bold mb-4">Prêt à commencer ?</h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Notre équipe est là pour vous accompagner dans votre projet d&apos;import.
+            Notre équipe est là pour vous accompagner dans votre projet d'import.
           </p>
         </div>
         
@@ -750,7 +962,7 @@ Demande envoyée depuis le site web.`
               )}
               {submitStatus === 'error' && (
                 <div className="mb-6 p-4 bg-red-500/20 border border-red-500 rounded-lg text-red-300">
-                  ❌ Une erreur s&apos;est produite. Veuillez réessayer ou nous contacter directement.
+                  ❌ Une erreur s'est produite. Veuillez réessayer ou nous contacter directement.
                 </div>
               )}
 
@@ -813,7 +1025,7 @@ Demande envoyée depuis le site web.`
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
-                    placeholder="Décrivez votre projet d&apos;import *"
+                    placeholder="Décrivez votre projet d'import *"
                     required
                     className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all resize-none"
                   ></textarea>
@@ -868,7 +1080,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-gray-400 leading-relaxed mb-4">
-              Votre partenaire de confiance pour l&apos;import de produits chinois. 
+              Votre partenaire de confiance pour l'import de produits chinois. 
               Nous facilitons vos achats internationaux avec un service professionnel et sécurisé.
             </p>
             <div className="flex items-center space-x-4">
@@ -910,7 +1122,7 @@ const Footer = () => {
             <ul className="space-y-2 text-gray-400">
               <li><a href="tel:+8617858909510">+86 178 5890 9510</a></li>
               <li>boomxpresse@yahoo.com</li>
-              <li>Paris, France</li>
+              <li>Chine, Yiwu</li>
             </ul>
           </div>
         </div>
@@ -954,6 +1166,7 @@ export default function HomePage() {
       <HowItWorks />
       <WhyChooseUs />
       <Testimonials />
+      <PricingPlans />
       <Contact />
       <Footer />
       <WhatsAppWidget />

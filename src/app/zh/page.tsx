@@ -29,6 +29,7 @@ const Header = () => {
     { href: '#how-it-works', label: '运作方式' },
     { href: '#why-us', label: '为什么选择我们' },
     { href: '#testimonials', label: '客户评价' },
+    { href: '/zh/devis', label: '费率报价' },
     { href: '/blog', label: '博客' },
     { href: '#contact', label: '联系我们' }
   ]
