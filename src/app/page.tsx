@@ -241,7 +241,7 @@ const Hero = () => {
             </h1>
             
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              BoomXpresse vous accompagne dans l'achat et la livraison de produits chinois partout dans le monde. 
+              BoomXpresse vous accompagne dans l&apos;achat et la livraison de produits chinois partout dans le monde. 
               Service rapide, fiable et sécurisé avec suivi en temps réel.
             </p>
             
@@ -361,7 +361,7 @@ const Services = () => {
           </div>
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Nos Services</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Une solution complète pour tous vos besoins d'import depuis la Chine
+            Une solution complète pour tous vos besoins d&apos;import depuis la Chine
           </p>
         </div>
         
@@ -700,7 +700,7 @@ const PricingPlans = () => {
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Des solutions adaptées à chaque besoin, de l'entrepreneur débutant à l'entreprise établie
+            Des solutions adaptées à chaque besoin, de l&apos;entrepreneur débutant à l&apos;entreprise établie
           </p>
         </div>
 
@@ -897,7 +897,7 @@ Demande envoyée depuis le site web.`
           </div>
           <h2 className="text-4xl font-bold mb-4">Prêt à commencer ?</h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Notre équipe est là pour vous accompagner dans votre projet d'import.
+            Notre équipe est là pour vous accompagner dans votre projet d&apos;import.
           </p>
         </div>
         
@@ -962,7 +962,7 @@ Demande envoyée depuis le site web.`
               )}
               {submitStatus === 'error' && (
                 <div className="mb-6 p-4 bg-red-500/20 border border-red-500 rounded-lg text-red-300">
-                  ❌ Une erreur s'est produite. Veuillez réessayer ou nous contacter directement.
+                  ❌ Une erreur s&apos;est produite. Veuillez réessayer ou nous contacter directement.
                 </div>
               )}
 
@@ -1080,7 +1080,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-gray-400 leading-relaxed mb-4">
-              Votre partenaire de confiance pour l'import de produits chinois. 
+              Votre partenaire de confiance pour l&apos;import de produits chinois. 
               Nous facilitons vos achats internationaux avec un service professionnel et sécurisé.
             </p>
             <div className="flex items-center space-x-4">

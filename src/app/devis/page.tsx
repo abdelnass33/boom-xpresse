@@ -14,7 +14,7 @@ const aerienTarifs = {
       unite: 'FCFA/kg'
     },
     standard: {
-      pays: ['Côte d\'Ivoire', 'Bénin', 'Togo', 'Cameroun', 'Sénégal', 'Mali', 'Ghana', 'Burkina Faso', 'Guinée', 'Tchad', 'Maroc', 'Algérie', 'Tunisie','Egypte','Nigeria','Niger'],
+      pays: ['Côte d&apos;Ivoire', 'Bénin', 'Togo', 'Cameroun', 'Sénégal', 'Mali', 'Ghana', 'Burkina Faso', 'Guinée', 'Tchad', 'Maroc', 'Algérie', 'Tunisie','Egypte','Nigeria','Niger'],
       prix: 9900,
       delai: '10 à 15 jours',
       unite: 'FCFA/kg'
@@ -133,7 +133,7 @@ const CalculateurDevis = () => {
               <option value="">Sélectionner un pays</option>
               {formData.zone === 'afrique' ? (
                 <>
-                  <option value="Côte d'Ivoire">Côte d&apos;Ivoire</option>
+                  <option value="Côte d&apos;Ivoire">Côte d&apos;Ivoire</option>
                   <option value="Bénin">Bénin</option>
                   <option value="Togo">Togo</option>
                 </>
