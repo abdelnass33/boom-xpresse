@@ -6,61 +6,8 @@ import { Menu, X, Globe, Package, Truck, Shield, Star, Phone, Mail, MapPin, Chev
 import { FaFacebookF, FaLinkedinIn, FaEnvelope } from 'react-icons/fa';
 import { SiSnapchat, SiInstagram, SiTiktok } from 'react-icons/si';
 import { motion } from 'framer-motion';
-import useLanguageDetection from '@/hooks/useLanguageDetection'
 
 const whatsappLink = "https://wa.me/8617858909510?text=" + encodeURIComponent("Bonjour, je souhaite un devis gratuit pour l'import de marchandises depuis la Chine. Merci de me contacter.");
-
-const LanguageSelector = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [currentLang, setCurrentLang] = useState('FR')
-
-  const languages = [
-    { code: 'FR', label: 'Français', flag: '🇫🇷', path: '/' },
-    { code: 'EN', label: 'English', flag: '🇺🇸', path: '/en' },
-    { code: '中文', label: '中文', flag: '🇨🇳', path: '/zh' }
-  ]
-
-  const handleLanguageChange = (lang: any) => {
-    setCurrentLang(lang.code)
-    localStorage.setItem('preferredLanguage', lang.code.toLowerCase() === 'fr' ? 'fr' : lang.code.toLowerCase() === 'en' ? 'en' : 'zh')
-    setIsOpen(false)
-    window.location.href = lang.path
-  }
-
-  return (
-    <div className="relative">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
-      >
-        <span className="text-lg">{languages.find(l => l.code === currentLang)?.flag}</span>
-        <span className="font-medium text-gray-700 hidden sm:block">{currentLang}</span>
-        <ChevronRight className={`h-4 w-4 text-gray-500 transition-transform duration-200 ${isOpen ? 'rotate-90' : ''}`} />
-      </button>
-
-      {isOpen && (
-        <div className="absolute top-full right-0 mt-2 bg-white rounded-xl shadow-lg border border-gray-200 py-2 min-w-[180px] z-50">
-          {languages.map((lang) => (
-            <button
-              key={lang.code}
-              onClick={() => handleLanguageChange(lang)}
-              className="w-full flex items-center space-x-3 px-4 py-3 hover:bg-orange-50 hover:text-orange-600 transition-colors text-left"
-            >
-              <span className="text-lg">{lang.flag}</span>
-              <div>
-                <div className="font-medium">{lang.code}</div>
-                <div className="text-xs text-gray-500">{lang.label}</div>
-              </div>
-              {currentLang === lang.code && (
-                <div className="ml-auto w-2 h-2 bg-orange-500 rounded-full"></div>
-              )}
-            </button>
-          ))}
-        </div>
-      )}
-    </div>
-  )
-}
 
 const WhatsAppWidget = () => {
   return (
@@ -164,13 +111,8 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Right Side - Language + Menu */}
+          {/* Right Side - Menu */}
           <div className="flex items-center space-x-4">
-            {/* Language Selector - Desktop */}
-            <div className="hidden lg:block">
-              <LanguageSelector />
-            </div>
-
             {/* Mobile Menu Button */}
             <button
               className="lg:hidden relative w-10 h-10 flex flex-col justify-center items-center rounded-lg hover:bg-gray-100 transition-colors"
@@ -202,14 +144,6 @@ const Header = () => {
                 </div>
               </a>
             ))}
-            
-            {/* Sélecteur de langue pour mobile - plus visible */}
-            <div className="px-4 py-2 border-t border-gray-100 mt-2 pt-4">
-              <div className="text-sm text-gray-600 mb-2 font-medium">Changer de langue :</div>
-              <div className="flex items-center justify-center">
-                <LanguageSelector />
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -1136,9 +1070,6 @@ const Footer = () => {
 }
 
 export default function HomePage() {
-  // Language detection hook
-  useLanguageDetection()
-
   useEffect(() => {
     // Smooth scroll behavior for anchor links
     const handleAnchorClick = (e: Event) => {
