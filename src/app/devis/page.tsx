@@ -19,12 +19,6 @@ const aerienTarifs = {
       delai: '10 à 15 jours',
       unite: 'FCFA/kg'
     }
-  },
-  international: {
-    pays: ['France', 'Canada', 'USA', 'Dubaï', 'Turquie'],
-    prix: 'Sur devis',
-    delai: 'Variable',
-    unite: ''
   }
 }
 
@@ -34,18 +28,12 @@ const maritimeTarifs = {
     prix: 210500,
     delai: '40 à 60 jours',
     unite: 'FCFA/CBM'
-  },
-  international: {
-    prix: 'Sur devis',
-    delai: 'Variable',
-    unite: ''
   }
 }
 
 const CalculateurDevis = () => {
   const [formData, setFormData] = useState({
     typeTransport: 'aerien',
-    zone: 'afrique',
     pays: '',
     typeAerien: 'standard',
     poids: '',
@@ -66,7 +54,7 @@ const CalculateurDevis = () => {
     let estimation = 0
     let details = ''
 
-    if (formData.typeTransport === 'aerien' && formData.zone === 'afrique') {
+    if (formData.typeTransport === 'aerien') {
       const poids = parseFloat(formData.poids) || 0
       if (formData.typeAerien === 'express') {
         estimation = poids * aerienTarifs.afrique.express.prix
@@ -75,12 +63,10 @@ const CalculateurDevis = () => {
         estimation = poids * aerienTarifs.afrique.standard.prix
         details = `Transport aérien standard vers ${formData.pays} - ${aerienTarifs.afrique.standard.delai}`
       }
-    } else if (formData.typeTransport === 'maritime' && formData.zone === 'afrique') {
+    } else if (formData.typeTransport === 'maritime') {
       const volume = parseFloat(formData.volume) || 0
       estimation = volume * maritimeTarifs.afrique.prix
-      details = `Transport maritime vers l'Afrique - ${maritimeTarifs.afrique.delai}`
-    } else {
-      details = 'Devis personnalisé requis pour cette destination'
+      details = `Transport maritime vers ${formData.pays} - ${maritimeTarifs.afrique.delai}`
     }
 
     setResultat({ estimation, details })
@@ -109,18 +95,7 @@ const CalculateurDevis = () => {
             </select>
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-black mb-2">Zone de destination</label>
-            <select
-              name="zone"
-              value={formData.zone}
-              onChange={handleChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 text-black"
-            >
-              <option value="afrique">Zone Afrique</option>
-              <option value="international">Zone Internationale</option>
-            </select>
-          </div>
+
 
           <div>
             <label className="block text-sm font-medium text-black mb-2">Pays de destination</label>
@@ -131,24 +106,26 @@ const CalculateurDevis = () => {
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 text-black"
             >
               <option value="">Sélectionner un pays</option>
-              {formData.zone === 'afrique' ? (
-                <>
-                  <option value="Côte d&apos;Ivoire">Côte d&apos;Ivoire</option>
-                  <option value="Bénin">Bénin</option>
-                  <option value="Togo">Togo</option>
-                </>
-              ) : (
-                <>
-                  <option value="France">France</option>
-                  <option value="Canada">Canada</option>
-                  <option value="USA">USA</option>
-                  <option value="Dubaï">Dubaï</option>
-                </>
-              )}
+              <option value="Côte d&apos;Ivoire">Côte d&apos;Ivoire</option>
+              <option value="Bénin">Bénin</option>
+              <option value="Togo">Togo</option>
+              <option value="Cameroun">Cameroun</option>
+              <option value="Sénégal">Sénégal</option>
+              <option value="Mali">Mali</option>
+              <option value="Ghana">Ghana</option>
+              <option value="Burkina Faso">Burkina Faso</option>
+              <option value="Guinée">Guinée</option>
+              <option value="Tchad">Tchad</option>
+              <option value="Maroc">Maroc</option>
+              <option value="Algérie">Algérie</option>
+              <option value="Tunisie">Tunisie</option>
+              <option value="Egypte">Egypte</option>
+              <option value="Nigeria">Nigeria</option>
+              <option value="Niger">Niger</option>
             </select>
           </div>
 
-          {formData.typeTransport === 'aerien' && formData.zone === 'afrique' && (
+          {formData.typeTransport === 'aerien' && (
             <div>
               <label className="block text-sm font-medium text-black mb-2">Type de service aérien</label>
               <select
@@ -313,7 +290,7 @@ export default function DevisPage() {
                     1 à 4 jours
                   </div>
                   <div className="text-sm text-gray-600">
-                    Destinations : Côte d&apos;Ivoire, Bénin, Togo
+                    Destinations : Côte d&apos;Ivoire, Bénin, Togo, Cameroun, Sénégal, Mali, Ghana, Burkina Faso, Guinée, Tchad, Maroc, Algérie, Tunisie, Egypte, Nigeria, Niger
                   </div>
                 </div>
 
@@ -329,7 +306,7 @@ export default function DevisPage() {
                     10 à 15 jours
                   </div>
                   <div className="text-sm text-gray-600">
-                    Destinations : Côte d&apos;Ivoire, Bénin, Togo
+                    Destinations : Côte d&apos;Ivoire, Bénin, Togo, Cameroun, Sénégal, Mali, Ghana, Burkina Faso, Guinée, Tchad, Maroc, Algérie, Tunisie, Egypte, Nigeria, Niger
                   </div>
                 </div>
               </div>
@@ -342,9 +319,19 @@ export default function DevisPage() {
                 </h3>
                 
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <h4 className="font-semibold text-blue-700 mb-2">Tarifs sur devis</h4>
+                  <div className="flex justify-between items-start mb-2">
+                    <h4 className="font-semibold text-blue-700">Tarifs sur devis</h4>
+                    <a
+                      href="https://wa.me/8617858909510?text=Bonjour%2C%20je%20souhaite%20obtenir%20un%20devis%20pour%20le%20transport%20a%C3%A9rien%20vers%20une%20destination%20internationale.%20Merci%20de%20me%20contacter."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-full text-xs font-medium transition-colors flex items-center"
+                    >
+                      📱 WhatsApp
+                    </a>
+                  </div>
                   <div className="text-sm text-gray-600 mb-2">
-                    Destinations : France, Canada, USA, Dubaï
+                    Destinations : France, Canada, USA, Dubaï, Turquie
                   </div>
                   <div className="flex items-center text-sm text-blue-600">
                     <CheckCircle className="h-4 w-4 mr-1" />
@@ -352,6 +339,7 @@ export default function DevisPage() {
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
 
@@ -381,10 +369,12 @@ export default function DevisPage() {
                     40 à 60 jours
                   </div>
                   <div className="text-sm text-gray-600">
-                    Tous pays d&apos;Afrique de l&apos;Ouest
+                    Côte d&apos;Ivoire, Bénin, Togo, Cameroun, Sénégal, Mali, Ghana, Burkina Faso, Guinée, Tchad, Maroc, Algérie, Tunisie, Egypte, Nigeria, Niger
                   </div>
                 </div>
               </div>
+
+
 
               {/* Zone Internationale */}
               <div>
@@ -393,10 +383,20 @@ export default function DevisPage() {
                   Zone Internationale
                 </h3>
                 
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <h4 className="font-semibold text-blue-700 mb-2">Tarifs sur devis</h4>
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                  <div className="flex justify-between items-start mb-2">
+                    <h4 className="font-semibold text-blue-700">Tarifs sur devis</h4>
+                    <a
+                      href="https://wa.me/8617858909510?text=Bonjour%2C%20je%20souhaite%20obtenir%20un%20devis%20pour%20le%20transport%20maritime%20vers%20une%20destination%20internationale.%20Merci%20de%20me%20contacter."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-full text-xs font-medium transition-colors flex items-center"
+                    >
+                      📱 WhatsApp
+                    </a>
+                  </div>
                   <div className="text-sm text-gray-600 mb-2">
-                    Toutes destinations mondiales
+                    Destinations : France, Canada, USA, Dubaï, Turquie
                   </div>
                   <div className="flex items-center text-sm text-blue-600">
                     <CheckCircle className="h-4 w-4 mr-1" />
