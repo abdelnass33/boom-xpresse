@@ -25,9 +25,16 @@ const aerienTarifs = {
 // Tarifs transport maritime
 const maritimeTarifs = {
   afrique: {
-    prix: 210500,
-    delai: '40 à 60 jours',
-    unite: 'FCFA/CBM'
+    cbm: {
+      prix: 210500,
+      delai: '40 à 60 jours',
+      unite: 'FCFA/CBM'
+    },
+    conteneurPlein: {
+      prix: 2500, // en euros
+      delai: '35 à 50 jours',
+      unite: '€/conteneur 20\''
+    }
   }
 }
 
@@ -36,6 +43,7 @@ const CalculateurDevis = () => {
     typeTransport: 'aerien',
     pays: '',
     typeAerien: 'standard',
+    typeMaritime: 'cbm',
     poids: '',
     volume: '',
     produit: '',
@@ -64,9 +72,14 @@ const CalculateurDevis = () => {
         details = `Transport aérien standard vers ${formData.pays} - ${aerienTarifs.afrique.standard.delai}`
       }
     } else if (formData.typeTransport === 'maritime') {
-      const volume = parseFloat(formData.volume) || 0
-      estimation = volume * maritimeTarifs.afrique.prix
-      details = `Transport maritime vers ${formData.pays} - ${maritimeTarifs.afrique.delai}`
+      if (formData.typeMaritime === 'cbm') {
+        const volume = parseFloat(formData.volume) || 0
+        estimation = volume * maritimeTarifs.afrique.cbm.prix
+        details = `Transport maritime CBM vers ${formData.pays} - ${maritimeTarifs.afrique.cbm.delai}`
+      } else if (formData.typeMaritime === 'conteneurPlein') {
+        estimation = maritimeTarifs.afrique.conteneurPlein.prix * 655.957 // Conversion €→FCFA (taux approximatif)
+        details = `Transport maritime conteneur plein vers ${formData.pays} - ${maritimeTarifs.afrique.conteneurPlein.delai}`
+      }
     }
 
     setResultat({ estimation, details })
@@ -156,6 +169,21 @@ const CalculateurDevis = () => {
 
           {formData.typeTransport === 'maritime' && (
             <div>
+              <label className="block text-sm font-medium text-black mb-2">Type de service maritime</label>
+              <select
+                name="typeMaritime"
+                value={formData.typeMaritime}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 text-black"
+              >
+                <option value="cbm">Conteneur partagé (210,500 FCFA/CBM)</option>
+                <option value="conteneurPlein">Conteneur plein 20&apos; (2,500 €)</option>
+              </select>
+            </div>
+          )}
+
+          {formData.typeTransport === 'maritime' && formData.typeMaritime === 'cbm' && (
+            <div>
               <label className="block text-sm font-medium text-black mb-2">Volume (CBM)</label>
               <input
                 type="number"
@@ -166,6 +194,20 @@ const CalculateurDevis = () => {
                 step="0.1"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 text-black"
               />
+            </div>
+          )}
+
+          {formData.typeTransport === 'maritime' && formData.typeMaritime === 'conteneurPlein' && (
+            <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+              <div className="text-sm text-purple-700">
+                <strong>Conteneur 20&apos; complet</strong>
+                <br />
+                📦 Capacité maximale : ~28 CBM
+                <br />
+                ⚖️ Poids maximum : 28 tonnes
+                <br />
+                💰 Tarif fixe : 2,500 € (≈ 1,640,000 FCFA)
+              </div>
             </div>
           )}
 
@@ -361,8 +403,9 @@ export default function DevisPage() {
                   Zone Afrique
                 </h3>
                 
-                <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
-                  <h4 className="font-semibold text-orange-700 mb-2">Tarif conteneur</h4>
+                {/* Tarif CBM */}
+                <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-4">
+                  <h4 className="font-semibold text-orange-700 mb-2">Tarif conteneur partagé</h4>
                   <div className="text-2xl font-bold text-orange-600 mb-2">À partir de 210,500 FCFA/CBM</div>
                   <div className="flex items-center text-sm text-orange-600 mb-2">
                     <Clock className="h-4 w-4 mr-1" />
@@ -370,6 +413,25 @@ export default function DevisPage() {
                   </div>
                   <div className="text-sm text-gray-600">
                     Côte d&apos;Ivoire, Bénin, Togo, Cameroun, Sénégal, Mali, Ghana, Burkina Faso, Guinée, Tchad, Maroc, Algérie, Tunisie, Egypte, Nigeria, Niger
+                  </div>
+                </div>
+
+                {/* Conteneur plein */}
+                <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                  <div className="flex justify-between items-start mb-2">
+                    <h4 className="font-semibold text-purple-700">Conteneur plein (FCL)</h4>
+                    <span className="bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded-full">EXCLUSIF</span>
+                  </div>
+                  <div className="text-2xl font-bold text-purple-600 mb-2">2,500 €</div>
+                  <div className="flex items-center text-sm text-purple-600 mb-2">
+                    <Clock className="h-4 w-4 mr-1" />
+                    35 à 50 jours
+                  </div>
+                  <div className="text-sm text-gray-600 mb-2">
+                    Conteneur 20' complet pour vos marchandises
+                  </div>
+                  <div className="text-xs text-purple-600 bg-purple-100 p-2 rounded">
+                    📦 Capacité: ~28 CBM | Poids max: 28 tonnes
                   </div>
                 </div>
               </div>

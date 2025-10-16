@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { Metadata } from 'next'
 import Link from 'next/link'
 import { Menu, X, Globe, Package, Truck, Shield, Star, Phone, Mail, MapPin, ChevronRight, Play, Clock, CheckCircle, Users, Heart } from 'lucide-react'
 import { FaFacebookF, FaLinkedinIn, FaEnvelope } from 'react-icons/fa';
@@ -1090,6 +1091,79 @@ export default function HomePage() {
 
   return (
     <main className="overflow-x-hidden">
+      {/* Données structurées pour le SEO */}
+      <script 
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "BoomXpresse",
+            "alternateName": "boom xpresse",
+            "description": "BoomXpresse, expert en import depuis la Chine vers l'Afrique. Transport aérien et maritime, sourcing, contrôle qualité, dédouanement.",
+            "url": "https://boomxpresse.com",
+            "telephone": "+86-178-5890-9510",
+            "email": "boomxpresse@yahoo.com",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Paris",
+              "addressCountry": "FR"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "48.8566",
+              "longitude": "2.3522"
+            },
+            "openingHours": "Mo-Su 00:00-23:59",
+            "priceRange": "€€",
+            "serviceArea": {
+              "@type": "GeoCircle",
+              "geoMidpoint": {
+                "@type": "GeoCoordinates",
+                "latitude": "0",
+                "longitude": "0"
+              },
+              "geoRadius": "20000000"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Services BoomXpresse",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Transport aérien Chine-Afrique",
+                    "description": "Transport aérien express et standard depuis la Chine vers l'Afrique"
+                  }
+                },
+                {
+                  "@type": "Offer", 
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Transport maritime Chine-Afrique",
+                    "description": "Transport maritime conteneur depuis la Chine vers l'Afrique"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service", 
+                    "name": "Sourcing produits chinois",
+                    "description": "Recherche et sélection de fournisseurs en Chine"
+                  }
+                }
+              ]
+            },
+            "sameAs": [
+              "https://www.facebook.com/boomxpresse",
+              "https://www.linkedin.com/company/boomxpresse", 
+              "https://www.instagram.com/boomxpresse"
+            ]
+          })
+        }}
+      />
+      
       <PromoBanner />
       <Header />
       <Hero />
