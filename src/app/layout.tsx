@@ -6,6 +6,7 @@ import Script from "next/script"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://boomxpresse.com'),
   title: "BoomXpresse - Import Chine & Transport International | Devis Gratuit 24h",
   description: "BoomXpresse, votre expert en import depuis la Chine ! Transport aérien et maritime vers l'Afrique. Sourcing, contrôle qualité, dédouanement. Service professionnel depuis 2020. Devis gratuit en 24h.",
   authors: [{ name: "BoomXpresse" }],

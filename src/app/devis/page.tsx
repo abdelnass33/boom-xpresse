@@ -33,7 +33,7 @@ const maritimeTarifs = {
     conteneurPlein: {
       prix: 2500, // en euros
       delai: '35 à 50 jours',
-      unite: '€/conteneur 20\''
+      unite: '€/conteneur 20\'\''
     }
   }
 }
@@ -428,7 +428,7 @@ export default function DevisPage() {
                     35 à 50 jours
                   </div>
                   <div className="text-sm text-gray-600 mb-2">
-                    Conteneur 20' complet pour vos marchandises
+                    Conteneur 20&apos; complet pour vos marchandises
                   </div>
                   <div className="text-xs text-purple-600 bg-purple-100 p-2 rounded">
                     📦 Capacité: ~28 CBM | Poids max: 28 tonnes
